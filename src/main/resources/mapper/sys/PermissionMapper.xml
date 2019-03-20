@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.icloud.mapper.system.PermissionMapper">
+    <resultMap id="PermissionMap" type="cn.com.icloud.model.system.PermissionEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="resource" jdbcType="VARCHAR" property="resource"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="handle" jdbcType="VARCHAR" property="handle"/>
+    </resultMap>
+
+    <resultMap id="ResourceHandleMap" type="cn.com.icloud.core.common.Resource">
+        <result column="resource" jdbcType="VARCHAR" property="resource"/>
+        <collection property="handleList" ofType="com.alibaba.fastjson.JSONObject">
+            <id column="id" jdbcType="BIGINT" property="id"/>
+            <result column="permission_key" jdbcType="VARCHAR" property="permission_key"/>
+        </collection>
+    </resultMap>
+
+    <select id="findAllResourcePermission" resultMap="ResourceHandleMap">
+        SELECT
+        p.resource,
+        p.id,
+        p.permission_key
+        FROM `icloud_sys_permission` p
+    </select>
+</mapper>

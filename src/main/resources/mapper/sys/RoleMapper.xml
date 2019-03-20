@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.icloud.mapper.system.RoleMapper">
+
+    <resultMap id="RoleMap" type="cn.com.icloud.model.system.RoleEntity">
+        <result column="role_id" jdbcType="BIGINT" property="roleId" />
+        <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+        <result column="role_key" jdbcType="VARCHAR" property="roleKey" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+    </resultMap>
+
+    <resultMap id="RoleWithPermissionMap" type="cn.com.icloud.model.system.RoleEntity" extends="RoleMap">
+        <!-- 1角色对应多权限 -->
+        <collection property="resourceList" ofType="cn.com.icloud.core.common.Resource">
+            <result column="permission_resource" jdbcType="VARCHAR" property="resource"/>
+            <collection property="handleList" ofType="com.alibaba.fastjson.JSONObject">
+                <id column="permission_id" jdbcType="BIGINT" property="id"/>
+                <result column="permission_key" jdbcType="VARCHAR" property="permission_key"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findAllRoleWithPermission" resultMap="RoleWithPermissionMap">
+        SELECT
+        r.*,
+        p.id as permission_id,
+        p.resource as permission_resource,
+        p.permission_key as permission_key
+        FROM `icloud_sys_role` r
+        LEFT JOIN `icloud_sys_role_permission` rp ON r.id = rp.role_id
+        LEFT JOIN `icloud_sys_permission` p ON rp.permission_id = p.id
+    </select>
+</mapper>
