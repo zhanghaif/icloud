@@ -15,7 +15,8 @@
             <result column="permission_resource" jdbcType="VARCHAR" property="resource"/>
             <collection property="handleList" ofType="com.alibaba.fastjson.JSONObject">
                 <id column="permission_id" jdbcType="BIGINT" property="id"/>
-                <result column="permission_key" jdbcType="VARCHAR" property="permission_key"/>
+                <result column="permission_code" jdbcType="VARCHAR" property="permissionCode"/>
+                <result column="permission_handle" jdbcType="VARCHAR" property="handle"/>
             </collection>
         </collection>
     </resultMap>
@@ -25,7 +26,7 @@
         r.*,
         p.id as permission_id,
         p.resource as permission_resource,
-        p.permission_key as permission_key
+        p.code as permission_code
         FROM `icloud_sys_role` r
         LEFT JOIN `icloud_sys_role_permission` rp ON r.id = rp.role_id
         LEFT JOIN `icloud_sys_permission` p ON rp.permission_id = p.id

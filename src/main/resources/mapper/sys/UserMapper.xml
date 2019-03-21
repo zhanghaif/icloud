@@ -28,8 +28,8 @@
     
     <resultMap id="UserDetailMap" type="cn.com.icloud.model.system.UserEntity" extends="UserWithRoleMap">
         <!-- 1角色对应多权限 -->
-        <collection property="permissionKeyList" ofType="String">
-            <result column="permission_key" jdbcType="VARCHAR" property="permission_key" />
+        <collection property="permissionCodeList" ofType="String">
+            <result column="permission_code" jdbcType="VARCHAR" property="permissionCode" />
         </collection>
     </resultMap>
     
@@ -39,7 +39,7 @@
         r.id as role_id,
         r.role_name as role_name,
         r.role_key as role_key,
-        p.permission_key as permission_key
+        p.code as permission_code
         FROM `icloud_sys_user` u
         LEFT JOIN `icloud_sys_user_role` ur ON u.id = ur.user_id
         LEFT JOIN `icloud_sys_role` r ON ur.role_id = r.id

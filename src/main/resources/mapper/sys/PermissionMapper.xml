@@ -12,7 +12,7 @@
         <result column="resource" jdbcType="VARCHAR" property="resource"/>
         <collection property="handleList" ofType="com.alibaba.fastjson.JSONObject">
             <id column="id" jdbcType="BIGINT" property="id"/>
-            <result column="permission_key" jdbcType="VARCHAR" property="permission_key"/>
+            <result column="handle" jdbcType="VARCHAR" property="handle"/>
         </collection>
     </resultMap>
 
@@ -20,7 +20,7 @@
         SELECT
         p.resource,
         p.id,
-        p.permission_key
+        p.handle
         FROM `icloud_sys_permission` p
     </select>
 </mapper>

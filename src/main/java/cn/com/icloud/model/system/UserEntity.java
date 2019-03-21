@@ -71,5 +71,5 @@ public class UserEntity {
      * 用户的角色对应的权限key
      */
     @Transient
-    private List<String> permissionKeyList;
+    private List<String> permissionCodeList;
 }

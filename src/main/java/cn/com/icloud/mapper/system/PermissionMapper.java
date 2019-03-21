@@ -22,6 +22,6 @@ public interface PermissionMapper extends MyMapper<PermissionEntity> {
      *
      * @return 代码列表
      */
-    @Select("SELECT p.permission_key FROM `icloud_sys_permission` p")
+    @Select("SELECT p.code FROM `icloud_sys_permission` p")
     List<String> findAllCode();
 }

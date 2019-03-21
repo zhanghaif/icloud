@@ -29,7 +29,7 @@ public class RoleController {
 	@Resource
     private RoleService roleService;
 	
-//    @PreAuthorize("hasAuthority('role:list')")
+//    @PreAuthorize("hasAuthority('system:role:list')")
 	@ApiOperation(value = "获取所有角色信息", notes = "角色信息")
     @ApiImplicitParam(name = "user", value = "信息", required = true)
     @GetMapping

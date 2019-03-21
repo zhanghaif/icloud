@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         final UserEntity user = this.userService.findDetailByAccount(account);
         // 权限
         final List<SimpleGrantedAuthority> authorities =
-                user.getPermissionKeyList().stream()
+                user.getPermissionCodeList().stream()
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
         // 角色
