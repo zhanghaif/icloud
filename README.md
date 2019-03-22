@@ -16,3 +16,8 @@
 
 ### 启动后访问：http://localhost:8090
 ### Swagger：http://localhost:8090/swagger-ui.html 
+
+### 环境说明
+STS4<br>
+JDK1.8<br>
+mysql5.6<br>
