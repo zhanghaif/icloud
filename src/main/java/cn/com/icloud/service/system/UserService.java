@@ -1,13 +1,9 @@
 package cn.com.icloud.service.system;
 
-
 import java.util.List;
-
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import cn.com.icloud.core.service.Service;
 import cn.com.icloud.model.entity.system.UserEntity;
-import cn.com.icloud.model.vo.system.UserVO;
 
 public interface UserService extends Service<UserEntity> {
    

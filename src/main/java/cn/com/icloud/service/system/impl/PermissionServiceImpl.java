@@ -1,8 +1,5 @@
 package cn.com.icloud.service.system.impl;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
 import cn.com.icloud.model.entity.system.PermissionEntity;
@@ -10,11 +7,17 @@ import cn.com.icloud.service.system.PermissionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * @className: PermissionServiceImpl
+ * @description: 权限service
+ * @author zhanghaifeng
+ * @dateTime 2019年3月21日 
+ */
 
 @Service
 @Transactional(rollbackFor = Exception.class)

@@ -1,6 +1,5 @@
 package cn.com.icloud.util;
 
-
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +7,6 @@ import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
-
 import javax.crypto.Cipher;
 import java.io.DataInputStream;
 import java.io.File;
@@ -31,9 +29,6 @@ import java.security.spec.X509EncodedKeySpec;
  * 要在Java内调用还要进行pkcs8编码：
  * openssl pkcs8 -topk8 -inform PEM -in key.pem -outform PEM -out private-key.pem -nocrypt
  * 最后将公私玥放在/resources/rsa/：private-key.pem public-key.pem
- *
- * @author Zoctan
- * @date 2018/05/27
  */
 @Component
 public class RSAUtil {

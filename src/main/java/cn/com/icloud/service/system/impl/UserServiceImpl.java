@@ -1,12 +1,10 @@
 package cn.com.icloud.service.system.impl;
 
-
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
 import cn.com.icloud.mapper.system.UserMapper;
 import cn.com.icloud.model.entity.system.UserEntity;
 import cn.com.icloud.service.system.UserService;
-
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @className: UserServiceImpl
+ * @description: 用户service
+ * @author zhanghaifeng
+ * @dateTime 2019年3月21日 
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends AbstractService<UserEntity> implements UserService {

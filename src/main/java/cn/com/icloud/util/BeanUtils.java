@@ -3,9 +3,7 @@ package cn.com.icloud.util;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 import java.util.Map;
-
 import org.springframework.cglib.beans.BeanCopier;
-import org.springframework.cglib.beans.BeanGenerator;
 import org.springframework.cglib.beans.BeanMap;
 
 import com.fasterxml.jackson.databind.BeanProperty;

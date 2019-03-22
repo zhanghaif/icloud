@@ -8,12 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
-
 /**
  * Spring MVC 配置
  *

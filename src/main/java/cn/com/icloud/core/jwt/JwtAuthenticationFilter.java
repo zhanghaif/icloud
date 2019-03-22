@@ -1,7 +1,6 @@
 package cn.com.icloud.core.jwt;
 
 import java.io.IOException;
-
 import cn.com.icloud.util.IpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Resource;
 import javax.servlet.FilterChain;

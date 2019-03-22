@@ -2,7 +2,6 @@ package cn.com.icloud.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,9 +12,6 @@ import java.net.URL;
 
 /**
  * IP工具
- *
- * @author Zoctan
- * @date 2018/06/09
  */
 public class IpUtil {
     private final static String UNKNOWN = "unknown";

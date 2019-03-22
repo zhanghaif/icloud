@@ -1,9 +1,7 @@
 package cn.com.icloud.model.entity.system;
 
 import lombok.Data;
-
 import java.util.List;
-
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 

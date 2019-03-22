@@ -1,7 +1,6 @@
 package cn.com.icloud.core.common;
 
 import com.alibaba.fastjson.JSONObject;
-
 import java.util.List;
 
 /**

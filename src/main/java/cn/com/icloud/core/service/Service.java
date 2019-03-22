@@ -2,7 +2,6 @@ package cn.com.icloud.core.service;
 
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;
-
 import java.util.List;
 
 /**

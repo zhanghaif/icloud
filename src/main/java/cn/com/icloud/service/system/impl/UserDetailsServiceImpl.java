@@ -14,6 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.com.icloud.model.entity.system.UserEntity;
 import cn.com.icloud.service.system.UserService;
 
+/**
+ * @className: UserDetailsServiceImpl
+ * @description: 登录service
+ * @author zhanghaifeng
+ * @dateTime 2019年3月21日 
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class UserDetailsServiceImpl implements UserDetailsService {
