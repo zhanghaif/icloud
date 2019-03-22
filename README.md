@@ -1,5 +1,5 @@
 # icloud
-###########目录结构描述<br>  
+########### 目录结构描述<br>  
 
 ├── src                                     <br>
 │   ├── cn.com.icloud.controller            // controller<br>
@@ -12,5 +12,7 @@
 ├── Readme.md                               // help <br>
 ├── doc                               		  // doc <br>
 ├── sql                               		  // sql <br>
-└── pom
+└── pom<br>
 
+### 启动后访问：http://localhost:8090
+### Swagger：http://localhost:8090/swagger-ui.html 
