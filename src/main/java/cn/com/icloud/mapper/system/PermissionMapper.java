@@ -2,7 +2,8 @@ package cn.com.icloud.mapper.system;
 
 import com.alibaba.fastjson.JSONObject;
 import cn.com.icloud.core.mapper.MyMapper;
-import cn.com.icloud.model.system.PermissionEntity;
+import cn.com.icloud.model.entity.system.PermissionEntity;
+
 import org.apache.ibatis.annotations.Select;
 import java.util.List;
 

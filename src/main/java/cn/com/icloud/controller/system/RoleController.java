@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
-import cn.com.icloud.model.system.RoleEntity;
+import cn.com.icloud.model.entity.system.RoleEntity;
 import cn.com.icloud.service.system.RoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

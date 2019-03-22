@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.com.icloud.model.system.UserEntity;
+import cn.com.icloud.model.entity.system.UserEntity;
 import cn.com.icloud.service.system.UserService;
 
 @Service

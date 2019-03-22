@@ -4,7 +4,7 @@ package cn.com.icloud.service.system;
 import java.util.List;
 
 import cn.com.icloud.core.service.Service;
-import cn.com.icloud.model.system.RoleEntity;
+import cn.com.icloud.model.entity.system.RoleEntity;
 
 public interface RoleService extends Service<RoleEntity> {
     /**

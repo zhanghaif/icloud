@@ -4,7 +4,7 @@ package cn.com.icloud.service.system.impl;
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
 import cn.com.icloud.mapper.system.UserMapper;
-import cn.com.icloud.model.system.UserEntity;
+import cn.com.icloud.model.entity.system.UserEntity;
 import cn.com.icloud.service.system.UserService;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

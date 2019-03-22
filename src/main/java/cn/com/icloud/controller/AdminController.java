@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.com.icloud.core.jwt.JwtUtil;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
-import cn.com.icloud.model.system.UserEntity;
+import cn.com.icloud.model.entity.system.UserEntity;
 import cn.com.icloud.service.system.UserService;
 import cn.com.icloud.service.system.impl.UserDetailsServiceImpl;
 import io.swagger.annotations.Api;

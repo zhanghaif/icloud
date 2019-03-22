@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.RoleMapper;
-import cn.com.icloud.model.system.RoleEntity;
+import cn.com.icloud.model.entity.system.RoleEntity;
 import cn.com.icloud.service.system.RoleService;
 
 @Service

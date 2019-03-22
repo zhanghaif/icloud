@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
-import cn.com.icloud.model.system.PermissionEntity;
+import cn.com.icloud.model.entity.system.PermissionEntity;
 import cn.com.icloud.service.system.PermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

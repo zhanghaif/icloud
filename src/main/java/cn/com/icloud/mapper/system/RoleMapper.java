@@ -4,7 +4,7 @@ package cn.com.icloud.mapper.system;
 import java.util.List;
 
 import cn.com.icloud.core.mapper.MyMapper;
-import cn.com.icloud.model.system.RoleEntity;
+import cn.com.icloud.model.entity.system.RoleEntity;
 
 public interface RoleMapper extends MyMapper<RoleEntity> {
     /**

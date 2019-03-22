@@ -5,7 +5,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.com.icloud.core.service.Service;
-import cn.com.icloud.model.system.PermissionEntity;
+import cn.com.icloud.model.entity.system.PermissionEntity;
 
 public interface PermissionService extends Service<PermissionEntity> {
     /**

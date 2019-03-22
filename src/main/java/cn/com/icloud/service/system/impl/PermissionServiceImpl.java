@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
-import cn.com.icloud.model.system.PermissionEntity;
+import cn.com.icloud.model.entity.system.PermissionEntity;
 import cn.com.icloud.service.system.PermissionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

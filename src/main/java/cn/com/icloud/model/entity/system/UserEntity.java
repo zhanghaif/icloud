@@ -1,4 +1,4 @@
-package cn.com.icloud.model.system;
+package cn.com.icloud.model.entity.system;
 
 import java.util.List;
 

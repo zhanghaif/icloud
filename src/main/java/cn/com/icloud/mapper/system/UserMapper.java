@@ -3,7 +3,7 @@ package cn.com.icloud.mapper.system;
 import java.util.List;
 import java.util.Map;
 import cn.com.icloud.core.mapper.MyMapper;
-import cn.com.icloud.model.system.UserEntity;
+import cn.com.icloud.model.entity.system.UserEntity;
 
 /**
  */
