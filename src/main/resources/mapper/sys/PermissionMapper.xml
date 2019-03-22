@@ -6,18 +6,44 @@
         <result column="resource" jdbcType="VARCHAR" property="resource"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="handle" jdbcType="VARCHAR" property="handle"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+         <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
     </resultMap>
 
+	<resultMap id="PermissionResourceMap" type="cn.com.icloud.core.common.Resource">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="resource" jdbcType="VARCHAR" property="resource"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="handle" jdbcType="VARCHAR" property="handle"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
+    </resultMap>
+    
     <resultMap id="ResourceHandleMap" type="cn.com.icloud.core.common.Resource">
         <result column="resource" jdbcType="VARCHAR" property="resource"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
         <collection property="handleList" ofType="com.alibaba.fastjson.JSONObject">
             <id column="id" jdbcType="BIGINT" property="id"/>
             <result column="handle" jdbcType="VARCHAR" property="handle"/>
+            <result column="code" jdbcType="VARCHAR" property="code"/>
         </collection>
     </resultMap>
 
+	<select id="list" resultMap="PermissionMap">
+        SELECT 
+        p.name,
+        p.code,
+        p.resource,
+        p.id,
+        p.parent_id,
+        p.handle
+        FROM icloud_sys_permission p
+    </select>
+    
     <select id="findAllResourcePermission" resultMap="ResourceHandleMap">
         SELECT
+        p.name,
+        p.code,
         p.resource,
         p.id,
         p.handle

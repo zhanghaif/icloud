@@ -1,10 +1,22 @@
 package cn.com.icloud.controller.system;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
+
+import cn.com.icloud.core.response.Result;
+import cn.com.icloud.core.response.ResultGenerator;
+import cn.com.icloud.model.system.PermissionEntity;
+import cn.com.icloud.service.system.PermissionService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @className: PermissionController
@@ -18,4 +30,16 @@ import io.swagger.annotations.Api;
 @Validated
 public class PermissionController {
 
+	@Resource
+	PermissionService permissionService;
+	
+	@ApiOperation(value = "获取所有菜单信息", notes = "菜单信息")
+	@GetMapping
+	public Result list() {
+		List<PermissionEntity> list = permissionService.findAllResourcePermission();
+		
+		return ResultGenerator.genOkResult(list);
+	}
+	
+	
 }

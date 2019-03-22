@@ -11,7 +11,7 @@ import javax.validation.ValidatorFactory;
 
 /**
  * @className: ProjectConstant
- * @description: 参数校验
+ * @description: hibernate Validator参数校验
  * @author zhanghaifeng
  * @dateTime 2019年3月18日 
  */
