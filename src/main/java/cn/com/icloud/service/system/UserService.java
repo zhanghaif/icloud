@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import cn.com.icloud.core.service.Service;
 import cn.com.icloud.model.entity.system.UserEntity;
+import cn.com.icloud.model.vo.system.UserVO;
 
 public interface UserService extends Service<UserEntity> {
    
@@ -17,7 +18,7 @@ public interface UserService extends Service<UserEntity> {
      * @param param  参数map
      * @return 用户
      */
-    UserEntity findDetailBy(String column, Object param);
+	UserEntity findDetailBy(String column, Object param);
 
     /**
      * 按用户名查询用户信息
