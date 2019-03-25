@@ -2,14 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.icloud.mapper.system.UserMapper">
 
-    <resultMap id="UserMap" type="cn.com.icloud.model.entity.system.UserEntity">
+	<resultMap id="User" type="cn.com.icloud.model.entity.system.SysUser">
+        <id property="id" column="id"/>
+        <result property="account" column="account"/>
+        <result property="password" column="password"/>
+        <!-- <result property="enable" column="enable"/> -->
+        <result property="tel" column="tel"/>
+        <result property="userName" column="user_name"/>
+        <result property="avatar" column="avatar"/>
+
+        <collection property="roles" ofType="cn.com.icloud.model.entity.system.SysRole">
+            <id property="id" column="role_id"/>
+            <result property="roleName" column="role_name"/>
+            <result property="roleKey" column="role_key"/>
+            <result property="enable" column="role_enable"/>
+        </collection>
+    </resultMap>
+    
+    <resultMap id="UserMap" type="cn.com.icloud.model.entity.system.SysUser">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="account" jdbcType="VARCHAR" property="account"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
     
-	<resultMap id="UserWithRoleMap" type="cn.com.icloud.model.entity.system.UserEntity" extends="UserMap">
+	<resultMap id="UserWithRoleMap" type="cn.com.icloud.model.entity.system.SysUser" extends="UserMap">
         <result column="role_id" jdbcType="BIGINT" property="roleId" />
         <result column="role_name" jdbcType="VARCHAR" property="roleName" />
         <result column="role_key" jdbcType="VARCHAR" property="roleKey" />
@@ -26,7 +43,7 @@
         LEFT JOIN `icloud_sys_role` r ON ur.role_id = r.id
     </select>
     
-    <resultMap id="UserDetailMap" type="cn.com.icloud.model.entity.system.UserEntity" extends="UserWithRoleMap">
+    <resultMap id="UserDetailMap" type="cn.com.icloud.model.entity.system.SysUser" extends="UserWithRoleMap">
         <!-- 1角色对应多权限 -->
         <collection property="permissionCodeList" ofType="String">
             <result column="permission_code" jdbcType="VARCHAR" property="permissionCode" />
@@ -51,6 +68,18 @@
         </where>
     </select>
     
+    <select id="getById" resultMap="User">
+        select
+            u.*,
+            v.role_id,
+            vr.role_name,
+            vr.role_key,
+            vr.enable as role_enable
+        from icloud_sys_user u
+            left join icloud_sys_user_role v on u.id = v.user_id
+            left join icloud_sys_role vr on v.role_id = vr.id
+        where u.id = #{id};
+    </select>
 
 
 </mapper>

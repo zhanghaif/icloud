@@ -3,20 +3,30 @@ package cn.com.icloud.core.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import cn.com.icloud.core.interceptor.LogInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Resource;
 /**
  * Spring MVC 配置
  *
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
+	
+	@Resource
+	LogInterceptor logInterceptor;
+	
+	
     /**
      * 阿里 FastJson 作JSON MessageConverter
      */
@@ -50,5 +60,12 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
         registry.addResourceHandler("/webjars/**")
             .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+    
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+    	 // 日志记录
+        InterceptorRegistration logRegistration = registry.addInterceptor(logInterceptor);
+        logRegistration.addPathPatterns("/**").excludePathPatterns("/", "/error");
     }
 }

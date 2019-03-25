@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Table(name="icloud_sys_role")
-public class RoleEntity {
+public class SysRole {
 
     private Long id;
 

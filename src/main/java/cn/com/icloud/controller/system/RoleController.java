@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
-import cn.com.icloud.model.entity.system.RoleEntity;
+import cn.com.icloud.model.entity.system.SysRole;
 import cn.com.icloud.service.system.RoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(value="角色管理",tags={"角色管理"})
 @RestController
-@RequestMapping("/v1/role")
+@RequestMapping("/v1/system/role")
 @Validated
 public class RoleController {
 
@@ -35,7 +35,7 @@ public class RoleController {
     @GetMapping
     public Result list() {
        
-        final List<RoleEntity> list = this.roleService.findAllRoleWithPermission();
+        final List<SysRole> list = this.roleService.findAllRoleWithPermission();
         
         return ResultGenerator.genOkResult(list);
     }

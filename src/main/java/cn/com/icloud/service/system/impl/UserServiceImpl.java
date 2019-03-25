@@ -3,7 +3,7 @@ package cn.com.icloud.service.system.impl;
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
 import cn.com.icloud.mapper.system.UserMapper;
-import cn.com.icloud.model.entity.system.UserEntity;
+import cn.com.icloud.model.entity.system.SysUser;
 import cn.com.icloud.service.system.UserService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class UserServiceImpl extends AbstractService<UserEntity> implements UserService {
+public class UserServiceImpl extends AbstractService<SysUser> implements UserService {
     @Resource
     private UserMapper userMapper;
 
@@ -33,7 +33,7 @@ public class UserServiceImpl extends AbstractService<UserEntity> implements User
     private PasswordEncoder passwordEncoder;
     
     @Override
-    public UserEntity findDetailBy(final String column, final Object param) {
+    public SysUser findDetailBy(final String column, final Object param) {
         final Map<String, Object> map = new HashMap<>(1);
         map.put(column, param);
         return this.userMapper.findDetailBy(map);
@@ -49,8 +49,8 @@ public class UserServiceImpl extends AbstractService<UserEntity> implements User
 
 
 	@Override
-    public UserEntity findDetailByAccount(final String account) throws UsernameNotFoundException {
-        final UserEntity user = this.findDetailBy("account", account);
+    public SysUser findDetailByAccount(final String account) throws UsernameNotFoundException {
+        final SysUser user = this.findDetailBy("account", account);
         if (user == null) {
             throw new UsernameNotFoundException("not found this username");
         }
@@ -60,7 +60,7 @@ public class UserServiceImpl extends AbstractService<UserEntity> implements User
 
 
     @Override
-    public List<UserEntity> findAllUserWithRole() {
+    public List<SysUser> findAllUserWithRole() {
         return this.userMapper.findAllUserWithRole();
     }
 

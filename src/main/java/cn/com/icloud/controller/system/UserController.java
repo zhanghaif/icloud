@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
-import cn.com.icloud.model.entity.system.UserEntity;
+import cn.com.icloud.model.entity.system.SysUser;
 import cn.com.icloud.service.system.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(value="用户管理",tags={"用户管理"})
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/v1/system/user")
 @Validated
 public class UserController {
 
@@ -34,7 +34,7 @@ public class UserController {
     @ApiImplicitParam(name = "user", value = "信息", required = true)
     @GetMapping
     public Result list() {
-        final List<UserEntity> list = this.userService.findAllUserWithRole();
+        final List<SysUser> list = this.userService.findAllUserWithRole();
         return ResultGenerator.genOkResult(list);
     }
 }

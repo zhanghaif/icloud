@@ -2,7 +2,7 @@ package cn.com.icloud.service.system.impl;
 
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
-import cn.com.icloud.model.entity.system.PermissionEntity;
+import cn.com.icloud.model.entity.system.SysPermission;
 import cn.com.icloud.service.system.PermissionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +21,13 @@ import java.util.Map;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class PermissionServiceImpl extends AbstractService<PermissionEntity> implements PermissionService {
+public class PermissionServiceImpl extends AbstractService<SysPermission> implements PermissionService {
     @Resource
     private PermissionMapper permissionMapper;
 
     @Override
-    public List<PermissionEntity> findAllResourcePermission() {
-    	List<PermissionEntity> permissionList = permissionMapper.list();
+    public List<SysPermission> findAllResourcePermission() {
+    	List<SysPermission> permissionList = permissionMapper.list();
         return buildPermissionTree(permissionList);
     }
   
@@ -40,11 +40,11 @@ public class PermissionServiceImpl extends AbstractService<PermissionEntity> imp
      * @return: List<PermissionEntity>      
      * @throws
      */
-    private List<PermissionEntity> buildPermissionTree(List<PermissionEntity> permissionList) {
-    	List<PermissionEntity> nodeTrees = new ArrayList<PermissionEntity>();
-        Map<String,PermissionEntity> treeMap = new LinkedHashMap<String,PermissionEntity>();
-        for(PermissionEntity node : permissionList){
-        	PermissionEntity treeNode = new PermissionEntity();
+    private List<SysPermission> buildPermissionTree(List<SysPermission> permissionList) {
+    	List<SysPermission> nodeTrees = new ArrayList<SysPermission>();
+        Map<String,SysPermission> treeMap = new LinkedHashMap<String,SysPermission>();
+        for(SysPermission node : permissionList){
+        	SysPermission treeNode = new SysPermission();
             treeNode.setId(node.getId());
             treeNode.setCode(node.getCode());
             treeNode.setHandle(node.getHandle());
@@ -54,15 +54,15 @@ public class PermissionServiceImpl extends AbstractService<PermissionEntity> imp
             treeMap.put(node.getId().toString(), treeNode);
         }
         for(String nodeId : treeMap.keySet()){
-        	PermissionEntity treeNode = treeMap.get(nodeId);
+        	SysPermission treeNode = treeMap.get(nodeId);
             Long pid = treeNode.getParentId();
             if(pid==null  || !treeMap.containsKey(pid.toString())){
                 treeNode.setParentId(null);
                 nodeTrees.add(treeNode);
             }else{
-            	PermissionEntity parentTreeNode = treeMap.get(pid.toString());
+            	SysPermission parentTreeNode = treeMap.get(pid.toString());
                 if(parentTreeNode.getChildren()==null){
-                    parentTreeNode.setChildren(new ArrayList<PermissionEntity>());
+                    parentTreeNode.setChildren(new ArrayList<SysPermission>());
                 }
                 parentTreeNode.getChildren().add(treeNode);
             }

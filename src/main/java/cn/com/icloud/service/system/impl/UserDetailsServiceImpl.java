@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.com.icloud.model.entity.system.UserEntity;
+import cn.com.icloud.model.entity.system.SysUser;
 import cn.com.icloud.service.system.UserService;
 
 /**
@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String account) {
-        final UserEntity user = this.userService.findDetailByAccount(account);
+        final SysUser user = this.userService.findDetailByAccount(account);
         // 权限
         final List<SimpleGrantedAuthority> authorities =
                 user.getPermissionCodeList().stream()

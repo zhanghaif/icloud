@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.icloud.mapper.system.LogMapper">
+    <resultMap id="SysLog" type="cn.com.icloud.model.entity.system.SysLog">
+        <id property="id" column="id"/>
+        <result property="module" column="module"/>
+        <result property="action" column="action"/>
+        <result property="exception" column="exception"/>
+        <result property="createDate" column="create_date"/>
+        <result property="ip" column="ip"/>
+        <association property="user" column="uid" select="cn.com.icloud.mapper.system.UserMapper.getById"/>
+    </resultMap>
+
+    <select id="getLogs" resultMap="SysLog">
+        select *
+        from icloud_sys_log
+    </select>
+
+    <insert id="save">
+        insert into icloud_sys_log (module, action, exception, uid, ip)
+        values (#{module}, #{action}, #{exception}, #{uid}, #{ip});
+    </insert>
+</mapper>

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Table(name="icloud_sys_permission")
-public class PermissionEntity {
+public class SysPermission {
 
 	/**
 	 * 权限Id
@@ -50,6 +50,6 @@ public class PermissionEntity {
 
     private Integer weight = 0;
 
-    private List<PermissionEntity> children;
+    private List<SysPermission> children;
    
 }

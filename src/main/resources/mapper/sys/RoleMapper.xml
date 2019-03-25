@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.icloud.mapper.system.RoleMapper">
 
-    <resultMap id="RoleMap" type="cn.com.icloud.model.entity.system.RoleEntity">
+    <resultMap id="RoleMap" type="cn.com.icloud.model.entity.system.SysRole">
         <result column="role_id" jdbcType="BIGINT" property="roleId" />
         <result column="role_name" jdbcType="VARCHAR" property="roleName" />
         <result column="role_key" jdbcType="VARCHAR" property="roleKey" />
         <result column="description" jdbcType="VARCHAR" property="description" />
     </resultMap>
 
-    <resultMap id="RoleWithPermissionMap" type="cn.com.icloud.model.entity.system.RoleEntity" extends="RoleMap">
+    <resultMap id="RoleWithPermissionMap" type="cn.com.icloud.model.entity.system.SysRole" extends="RoleMap">
         <!-- 1角色对应多权限 -->
         <collection property="resourceList" ofType="cn.com.icloud.core.common.Resource">
             <result column="permission_resource" jdbcType="VARCHAR" property="resource"/>

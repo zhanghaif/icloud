@@ -2,17 +2,17 @@ package cn.com.icloud.mapper.system;
 
 import com.alibaba.fastjson.JSONObject;
 import cn.com.icloud.core.mapper.MyMapper;
-import cn.com.icloud.model.entity.system.PermissionEntity;
+import cn.com.icloud.model.entity.system.SysPermission;
 import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
-public interface PermissionMapper extends MyMapper<PermissionEntity> {
+public interface PermissionMapper extends MyMapper<SysPermission> {
 	/**
      * 权限列表
      *
      * @return
      */
-	List<PermissionEntity> list();
+	List<SysPermission> list();
     /**
      * 找到所有权限可控资源
      *

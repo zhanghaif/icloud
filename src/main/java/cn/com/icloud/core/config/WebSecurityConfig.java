@@ -53,6 +53,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http)
             throws Exception {
+    	
         http    // 关闭cors
                 .cors().disable()
                 // 关闭csrf
