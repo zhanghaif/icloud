@@ -23,10 +23,11 @@ import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
 
 /**
- * 统一异常处理
- *
- * @author Zoctan
- * @date 2018/06/09
+ * 
+ * @className: ExceptionResolver.java
+ * @description: 异常处理
+ * @author zhanghaifeng
+ * @dateTime 2019年3月26日 下午1:24:42
  */
 @RestControllerAdvice
 public class ExceptionResolver {

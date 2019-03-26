@@ -1,17 +1,10 @@
 package cn.com.icloud.model.vo.system;
 
 import java.util.List;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
 import com.alibaba.fastjson.annotation.JSONField;
-
 import lombok.Data;
 
 @Data

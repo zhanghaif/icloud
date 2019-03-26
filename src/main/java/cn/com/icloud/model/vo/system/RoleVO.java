@@ -1,20 +1,14 @@
 package cn.com.icloud.model.vo.system;
 
 import java.util.List;
-
-import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
-
 import com.alibaba.fastjson.annotation.JSONField;
-
 import cn.com.icloud.core.common.Resource;
 import lombok.Data;
 
 @Data
-@Table(name="icloud_sys_role")
 public class RoleVO {
 
     private Long id;
