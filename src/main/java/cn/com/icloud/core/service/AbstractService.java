@@ -15,7 +15,8 @@ import tk.mybatis.mapper.entity.Condition;
  *
  */
 public abstract class AbstractService<T> implements Service<T> {
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
+    
+	@SuppressWarnings("SpringAutowiredFieldsWarningInspection")
     @Autowired
     protected MyMapper<T> mapper;
     /**
@@ -23,7 +24,8 @@ public abstract class AbstractService<T> implements Service<T> {
      */
     private final Class<T> modelClass;
 
-    protected AbstractService() {
+    @SuppressWarnings("unchecked")
+	protected AbstractService() {
         final ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
         //noinspection unchecked
         this.modelClass = (Class<T>) pt.getActualTypeArguments()[0];
