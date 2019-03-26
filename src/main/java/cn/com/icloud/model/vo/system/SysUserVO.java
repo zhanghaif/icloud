@@ -8,7 +8,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
 @Data
-public class UserVO {
+public class SysUserVO {
 
     private Long id;
     
@@ -34,7 +34,7 @@ public class UserVO {
     @Size(min = 6, message = "密码长度不能小于6")
     private String password;
     
-    private List<RoleVO> roles;
+    private List<SysRoleVO> roles;
     
     /**
      * 用户的角色Id

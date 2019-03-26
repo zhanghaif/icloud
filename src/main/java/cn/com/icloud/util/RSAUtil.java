@@ -3,17 +3,26 @@ package cn.com.icloud.util;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileCopyUtils;
+
 import javax.crypto.Cipher;
+
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.stream.Collectors;
 
 /**
  * RSA 工具
@@ -80,16 +89,10 @@ public class RSAUtil {
     }
 
     private byte[] replaceAndBase64Decode(final String file, final String headReplace, final String tailReplace) throws Exception {
-        final ResourceLoader loader = new DefaultResourceLoader();
-        final Resource resource = loader.getResource(file);
-        final File f = resource.getFile();
-        final FileInputStream fis = new FileInputStream(f);
-        final DataInputStream dis = new DataInputStream(fis);
-        final byte[] keyBytes = new byte[(int) f.length()];
-        dis.readFully(keyBytes);
-        dis.close();
-
-        final String temp = new String(keyBytes);
+    	ClassPathResource resource = new ClassPathResource(file);
+    	byte[] bdata = FileCopyUtils.copyToByteArray(resource.getInputStream());
+        String data = new String(bdata, StandardCharsets.UTF_8);
+        final String temp = new String(data);
         String publicKeyPEM = temp.replace(headReplace, "");
         publicKeyPEM = publicKeyPEM.replace(tailReplace, "");
 

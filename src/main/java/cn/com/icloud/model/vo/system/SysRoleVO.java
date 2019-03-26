@@ -9,7 +9,7 @@ import cn.com.icloud.core.common.Resource;
 import lombok.Data;
 
 @Data
-public class RoleVO {
+public class SysRoleVO {
 
     private Long id;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class PermissionVO {
+public class SysPermissionVO {
 
 	/**
 	 * 权限Id
@@ -48,6 +48,6 @@ public class PermissionVO {
 
     private Integer weight = 0;
 
-    private List<PermissionVO> children;
+    private List<SysPermissionVO> children;
    
 }
