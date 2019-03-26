@@ -26,7 +26,7 @@ public final class ProjectConstant {
     /**
      * ServiceImpl所在包
      */
-    public static final String SERVICE_IMPL_PACKAGE = SERVICE_PACKAGE + ".impl";
+    public static final String SERVICE_IMPL_PACKAGE = SERVICE_PACKAGE + ".service.*.impl";
     /**
      * Controller所在包
      */
@@ -35,4 +35,8 @@ public final class ProjectConstant {
      * Mapper插件基础接口的完全限定名
      */
     public static final String MAPPER_INTERFACE_REFERENCE = BASE_PACKAGE + ".core.mapper.MyMapper";
+    /**
+     * Config所在包
+     */
+//    public static final String CONFIG_PACKAGE = BASE_PACKAGE + ".core.config";
 }

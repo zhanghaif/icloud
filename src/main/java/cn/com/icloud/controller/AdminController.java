@@ -103,16 +103,8 @@ public class AdminController {
         final String account = user.getAccount();
         final UserDetails userDetails = this.userDetailsService.loadUserByUsername(account);
         final String token = this.jwtUtil.sign(account, userDetails.getAuthorities());
-//        this.log(user);
         return ResultGenerator.genOkResult(token);
     }
 	
-	private void log(final SysUser user) {
-		cn.com.icloud.model.entity.system.SysLog log = new cn.com.icloud.model.entity.system.SysLog();
-		SysUser dbUser = this.userService.findBy("account", user.getAccount());
-		log.setModule("登录");
-		log.setAction("登录");
-		log.setUid(dbUser.getId());
-		logService.save(log);
-	}
+
 }

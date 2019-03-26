@@ -2,10 +2,14 @@ package cn.com.icloud.controller.system;
 
 import java.util.List;
 import javax.annotation.Resource;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import cn.com.icloud.core.common.SysLog;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
 import cn.com.icloud.model.entity.system.SysPermission;
@@ -28,7 +32,9 @@ public class PermissionController {
 	@Resource
 	PermissionService permissionService;
 	
+	@PreAuthorize("hasAuthority('system:permission:list')")
 	@ApiOperation(value = "获取所有菜单信息", notes = "菜单信息")
+	@SysLog(module = "菜单", action = "列表")
 	@GetMapping
 	public Result list() {
 		List<SysPermission> list = permissionService.findAllResourcePermission();

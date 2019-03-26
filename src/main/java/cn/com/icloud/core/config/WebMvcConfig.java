@@ -66,6 +66,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     public void addInterceptors(InterceptorRegistry registry) {
     	 // 日志记录
         InterceptorRegistration logRegistration = registry.addInterceptor(logInterceptor);
-        logRegistration.addPathPatterns("/**").excludePathPatterns("/", "/error");
+        logRegistration.addPathPatterns("/v1/**").excludePathPatterns("/", "/error");
     }
 }

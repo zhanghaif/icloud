@@ -1,6 +1,8 @@
 package cn.com.icloud.controller.system;
 
 import javax.annotation.Resource;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +27,7 @@ public class LogController {
     @Resource
     LogService LogService;
 
+    @PreAuthorize("hasAuthority('system:log:list')")
     @ApiOperation(value = "获取所有日志信息", notes = "日志信息")
     @SysLog(module = "日志", action = "列表")
     @GetMapping

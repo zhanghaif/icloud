@@ -1,5 +1,6 @@
 package cn.com.icloud.controller.test;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.com.icloud.core.common.SysLog;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
 import io.swagger.annotations.Api;
@@ -18,6 +20,10 @@ import springfox.documentation.schema.Model;
 /**
  * @className: TestController
  * @description: 测试类
+ * 				@Api swagger注解
+ * 				@RestController 相当于@Controller+@ResponseBody两个注解的结合
+ * 				@RequestMapping 映射请求
+ *   			@Validated校验数据，如果数据异常则会统一抛出异常
  * @author zhanghaifeng
  * @dateTime 2019年3月19日 
  */
@@ -28,12 +34,26 @@ import springfox.documentation.schema.Model;
 @Validated
 public class TestController {
 
+	/**
+	 * 
+	 * @Title: list   
+	 * @Description: @PreAuthorize:进入方法之前验证授权
+	 * 				 @SysLog 日志管理，所有业务函数要使用此标签
+	 * 				 @ApiOperation swagger注解
+	 * 				 @GetMapping get请求
+	 * @param: @return      
+	 * @return: 返回统一格式的数据 { "code": 200,"data": "","msg": "OK"}
+	 * @throws
+	 */
+	@PreAuthorize("hasAuthority('test:list')")
 	@ApiOperation(value = "查询", notes = "查询信息")
+	@SysLog(module = "用户", action = "列表")
 	@GetMapping
 	public Result list() {
 		return ResultGenerator.genOkResult();
 	}
 	
+	@PreAuthorize("hasAuthority('test:delete')")
 	@ApiOperation(value = "按Id删除", notes = "删除方法")
     @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "id")
 	@DeleteMapping("/{id}")

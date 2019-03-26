@@ -67,20 +67,18 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 允许登录和注册
                 .antMatchers(
                         HttpMethod.POST,
-                        "/v1/login",
-                        "/v1"
+                        "/v1/login"
                 ).permitAll()
                 .antMatchers(
                         HttpMethod.GET,
-                        "/v1",
-                        "/"
+                        "/v1"
                 ).permitAll()
                 .antMatchers(
                         HttpMethod.GET,
                         "/favicon.ico",
                         "/v2/api-docs", 
                         "/configuration/ui",
-                        "/swagger-resources",
+                        "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**",

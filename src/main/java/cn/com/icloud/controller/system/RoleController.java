@@ -2,10 +2,14 @@ package cn.com.icloud.controller.system;
 
 import java.util.List;
 import javax.annotation.Resource;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import cn.com.icloud.core.common.SysLog;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
 import cn.com.icloud.model.entity.system.SysRole;
@@ -29,9 +33,10 @@ public class RoleController {
 	@Resource
     private RoleService roleService;
 	
-//    @PreAuthorize("hasAuthority('system:role:list')")
+    @PreAuthorize("hasAuthority('system:role:list')")
 	@ApiOperation(value = "获取所有角色信息", notes = "角色信息")
     @ApiImplicitParam(name = "user", value = "信息", required = true)
+	@SysLog(module = "角色", action = "列表")
     @GetMapping
     public Result list() {
        
