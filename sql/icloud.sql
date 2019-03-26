@@ -11,11 +11,49 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 22/03/2019 16:43:16
+ Date: 26/03/2019 11:18:11
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for icloud_sys_log
+-- ----------------------------
+DROP TABLE IF EXISTS `icloud_sys_log`;
+CREATE TABLE `icloud_sys_log`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `module` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `action` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `create_date` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `uid` bigint(20) NULL DEFAULT NULL,
+  `ip` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13047 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '日志表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of icloud_sys_log
+-- ----------------------------
+INSERT INTO `icloud_sys_log` VALUES (13028, '登录', '登录', NULL, '2019-03-26 10:07:03', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13029, '角色', '列表', NULL, '2019-03-26 10:07:07', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13030, '用户', '列表', NULL, '2019-03-26 10:07:09', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13031, '菜单', '列表', NULL, '2019-03-26 10:07:11', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13032, '日志', '列表', NULL, '2019-03-26 10:07:13', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13033, '登录', '登录', NULL, '2019-03-26 10:13:32', 7, '192.168.4.157');
+INSERT INTO `icloud_sys_log` VALUES (13034, '登录', '登录', NULL, '2019-03-26 10:16:17', 7, '192.168.4.157');
+INSERT INTO `icloud_sys_log` VALUES (13035, '登录', '登录', NULL, '2019-03-26 10:16:26', 7, '192.168.4.157');
+INSERT INTO `icloud_sys_log` VALUES (13036, '登录', '登录', NULL, '2019-03-26 10:26:32', 9, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13037, '用户', '列表', NULL, '2019-03-26 10:27:04', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13038, '菜单', '列表', NULL, '2019-03-26 10:30:03', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13039, '角色', '列表', NULL, '2019-03-26 10:30:23', 9, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13040, '日志', '列表', NULL, '2019-03-26 10:31:03', 9, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13041, '角色', '列表', NULL, '2019-03-26 10:33:16', 9, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13042, '登录', '登录', NULL, '2019-03-26 10:33:27', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13043, '角色', '列表', NULL, '2019-03-26 10:33:41', 7, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13044, '登录', '登录', NULL, '2019-03-26 10:33:51', 9, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13045, '角色', '列表', NULL, '2019-03-26 10:34:02', 9, '192.168.4.154');
+INSERT INTO `icloud_sys_log` VALUES (13046, '登录', '登录', NULL, '2019-03-26 10:40:02', 8, '192.168.4.154');
 
 -- ----------------------------
 -- Table structure for icloud_sys_permission
@@ -70,13 +108,14 @@ CREATE TABLE `icloud_sys_role`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UK_iace11lm41qsi7dstkaiecion`(`role_key`) USING BTREE,
   UNIQUE INDEX `UK_eu9uvi1fl9j2kmtul6bmcu0mh`(`role_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of icloud_sys_role
 -- ----------------------------
 INSERT INTO `icloud_sys_role` VALUES (1, '拥有系统全部权限，请谨慎分配。', b'1', 'admin', '管理员');
 INSERT INTO `icloud_sys_role` VALUES (3, '测试', b'1', 'normal', '普通用户');
+INSERT INTO `icloud_sys_role` VALUES (4, '只有用户权限', b'1', 'user', '用户');
 
 -- ----------------------------
 -- Table structure for icloud_sys_role_permission
@@ -96,16 +135,17 @@ CREATE TABLE `icloud_sys_role_permission`  (
 -- ----------------------------
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 1);
 INSERT INTO `icloud_sys_role_permission` VALUES (3, 1);
+INSERT INTO `icloud_sys_role_permission` VALUES (4, 1);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 2);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 3);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 4);
-INSERT INTO `icloud_sys_role_permission` VALUES (3, 4);
+INSERT INTO `icloud_sys_role_permission` VALUES (4, 4);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 5);
-INSERT INTO `icloud_sys_role_permission` VALUES (3, 5);
+INSERT INTO `icloud_sys_role_permission` VALUES (4, 5);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 6);
-INSERT INTO `icloud_sys_role_permission` VALUES (3, 6);
+INSERT INTO `icloud_sys_role_permission` VALUES (4, 6);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 7);
-INSERT INTO `icloud_sys_role_permission` VALUES (3, 7);
+INSERT INTO `icloud_sys_role_permission` VALUES (4, 7);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 8);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 9);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 10);
@@ -113,6 +153,7 @@ INSERT INTO `icloud_sys_role_permission` VALUES (1, 11);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 12);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 13);
 INSERT INTO `icloud_sys_role_permission` VALUES (1, 14);
+INSERT INTO `icloud_sys_role_permission` VALUES (3, 14);
 
 -- ----------------------------
 -- Table structure for icloud_sys_user
@@ -128,13 +169,14 @@ CREATE TABLE `icloud_sys_user`  (
   `avatar` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UK_dxesfklauarqhov4147i100ud`(`account`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of icloud_sys_user
 -- ----------------------------
 INSERT INTO `icloud_sys_user` VALUES (7, 'admin', b'1', '$2a$10$ItmuMLR4wUb5jjkBzg/CwuQADK7d9qbU725e.KyT/lLJEZeykDL62', '13203314875', '管理员', '');
-INSERT INTO `icloud_sys_user` VALUES (8, 'test', b'1', 'e10adc3949ba59abbe56e057f20f883e', '18676037292', 'test', '');
+INSERT INTO `icloud_sys_user` VALUES (8, 'test', b'1', '$2a$10$ItmuMLR4wUb5jjkBzg/CwuQADK7d9qbU725e.KyT/lLJEZeykDL62', '18676037292', 'test', '');
+INSERT INTO `icloud_sys_user` VALUES (9, 'admin1', b'1', '$2a$10$ItmuMLR4wUb5jjkBzg/CwuQADK7d9qbU725e.KyT/lLJEZeykDL62', '15600000000', '测试账户1', NULL);
 
 -- ----------------------------
 -- Table structure for icloud_sys_user_role
@@ -154,5 +196,6 @@ CREATE TABLE `icloud_sys_user_role`  (
 -- ----------------------------
 INSERT INTO `icloud_sys_user_role` VALUES (7, 1);
 INSERT INTO `icloud_sys_user_role` VALUES (8, 3);
+INSERT INTO `icloud_sys_user_role` VALUES (9, 4);
 
 SET FOREIGN_KEY_CHECKS = 1;
