@@ -25,6 +25,7 @@
         <jjwt.version>0.9.0</jjwt.version>
         <springfox-swagger2.version>2.8.0</springfox-swagger2.version>
         <reflectasm.version>1.07</reflectasm.version>
+        <skipTests>true</skipTests>
 	</properties>
 
 	<dependencies>
@@ -146,5 +147,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
