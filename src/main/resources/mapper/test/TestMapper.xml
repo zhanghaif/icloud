@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.icloud.mapper.test.TestMapper">
+   <resultMap id="BaseResultMap" type="cn.com.icloud.model.entity.test.SysTest">
+        <id property="id" jdbcType="BIGINT" column="id"/>
+        <result property="name" jdbcType="VARCHAR" column="name"/>
+        <result property="age" jdbcType="BIGINT" column="age"/>
+        <result property="address" jdbcType="VARCHAR" column="address"/>
+    </resultMap>
+	
+    <select id="getId" resultMap="BaseResultMap">
+        select * from icloud_sys_test where id = #{id,jdbcType=BIGINT};
+    </select>
+    
+    <update id="update">
+        update icloud_sys_test
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+    
+  <!--  <delete id="delete"  parameterType="java.lang.Long" >
+    	delete from icloud_sys_test
+        	where id = #{id};
+    </delete> -->
+    
+    <!-- <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    	INSERT INTO vboot_user (name, age, address)
+        VALUES (#{name}, #{age}, #{address});
+    </insert> -->
+</mapper>

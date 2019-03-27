@@ -1,9 +1,7 @@
 package cn.com.icloud.model.entity.system;
 
 import lombok.Data;
-
 import java.util.Date;
-
 import javax.persistence.Table;
 
 @Data
@@ -25,4 +23,5 @@ public class SysLog {
     private String ip;
 
     private SysUser user;
+    
 }

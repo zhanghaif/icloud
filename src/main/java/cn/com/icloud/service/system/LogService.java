@@ -1,7 +1,6 @@
 package cn.com.icloud.service.system;
 
 import java.util.List;
-
 import cn.com.icloud.core.service.Service;
 import cn.com.icloud.model.entity.system.SysLog;
 

@@ -79,4 +79,10 @@ public class SysUser {
      */
     @Transient
     private List<String> permissionCodeList;
+    
+    /**
+     * 用户的角色对应的权限
+     */
+    @Transient
+    private List<SysPermission> permissionList;
 }

@@ -48,6 +48,11 @@
         <collection property="permissionCodeList" ofType="String">
             <result column="permission_code" jdbcType="VARCHAR" property="permissionCode" />
         </collection>
+        <collection property="permissionList" ofType="cn.com.icloud.model.entity.system.SysPermission">
+            <result column="permission_code" jdbcType="VARCHAR" property="code" />
+            <result column="permission_name" jdbcType="VARCHAR" property="name" />
+            <result column="handle" jdbcType="VARCHAR" property="handle" />
+        </collection>
     </resultMap>
     
     <select id="findDetailBy" resultMap="UserDetailMap">
@@ -56,7 +61,9 @@
         r.id as role_id,
         r.role_name as role_name,
         r.role_key as role_key,
-        p.code as permission_code
+        p.code as permission_code,
+        p.name as permission_name,
+        p.handle
         FROM `icloud_sys_user` u
         LEFT JOIN `icloud_sys_user_role` ur ON u.id = ur.user_id
         LEFT JOIN `icloud_sys_role` r ON ur.role_id = r.id

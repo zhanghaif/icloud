@@ -71,7 +71,8 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 ).permitAll()
                 .antMatchers(
                         HttpMethod.GET,
-                        "/v1"
+                        "/v1",
+                        "/druid"
                 ).permitAll()
                 .antMatchers(
                         HttpMethod.GET,
