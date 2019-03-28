@@ -1,5 +1,5 @@
 server:
-    port: 8090
+    port: 8010
     tomcat:
       uri-encoding: utf-8
 #    servlet:
@@ -44,7 +44,7 @@ pagehelper:
              
 logging:
   level:
-    cn.com.icloud.mapper.system: debug
+    cn.com.icloud.mapper: debug
  
 jwt.expiration-time: 86400
 jwt.header: Authorization

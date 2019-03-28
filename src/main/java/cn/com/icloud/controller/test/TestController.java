@@ -76,6 +76,7 @@ public class TestController {
 	@DeleteMapping("/{id}")
 	public Result delete(@PathVariable final Long id) {
 		this.testService.deleteBy("id", id);
+//		this.testService.deleteById(id);
 		return ResultGenerator.genOkResult();
 	}
 	
@@ -84,6 +85,7 @@ public class TestController {
     @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "id")
 	@GetMapping("/{id}")
 	public Result from(@PathVariable final Long id) {
+		testService.findById(id);
 		return ResultGenerator.genOkResult(this.testService.findBy("id", id));
 	}
 	

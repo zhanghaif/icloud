@@ -27,7 +27,10 @@
         </set>
         where id = #{id};
     </update>
-    
+    <delete id="deleteById" parameterType="java.lang.Long" >
+	    delete from icloud_sys_test
+	    where id = #{id,jdbcType=BIGINT}
+ 	 </delete>
   <!--  <delete id="delete"  parameterType="java.lang.Long" >
     	delete from icloud_sys_test
         	where id = #{id};

@@ -63,5 +63,44 @@ public class UserServiceImpl extends AbstractService<SysUser> implements UserSer
     public List<SysUser> findAllUserWithRole() {
         return this.userMapper.findAllUserWithRole();
     }
+    
+    /**
+     * 重写save方法，密码加密后再存
+     */
+    @Override
+    public void save(final SysUser user) {
+    	SysUser u = this.findBy("account", user.getUsername());
+        if (u != null) {
+        	throw new UsernameNotFoundException("account already existed");
+        } else {
+                //log.info("before password : {}", user.getPassword().trim());
+                user.setPassword(this.passwordEncoder.encode(user.getPassword().trim()));
+                //log.info("after password : {}", user.getPassword());
+                this.userMapper.insertSelective(user);
+                //log.info("User<{}> id : {}", user.getUsername(), user.getId());
+                // 如果没有指定角色Id，以默认普通用户roleId保存
+                Long roleId = user.getRoleId();
+                if (roleId == null) {
+                    roleId = 2L;
+                }
+//                this.userRoleMapper.insert(new UserRole()
+//                        .setUserId(user.getId())
+//                        .setRoleId(roleId));
+            
+        }
+    }
+    
+    /**
+     * 重写update方法
+     */
+    @Override
+    public void update(final SysUser user) {
+        // 如果修改了密码
+        if (user.getPassword() != null && user.getPassword().length() >= 6) {
+            // 密码修改后需要加密
+            user.setPassword(this.passwordEncoder.encode(user.getPassword().trim()));
+        }
+        this.userMapper.updateByPrimaryKeySelective(user);
+    }
 
 }

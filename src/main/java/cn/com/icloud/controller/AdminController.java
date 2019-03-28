@@ -99,7 +99,7 @@ public class AdminController {
 	/**
 	 * 获得 token
 	*/
-	private Result getToken(final SysUser user) {
+	public Result getToken(final SysUser user) {
         final String account = user.getAccount();
         final UserDetails userDetails = this.userDetailsService.loadUserByUsername(account);
         final String token = this.jwtUtil.sign(account, userDetails.getAuthorities());
