@@ -1,7 +1,5 @@
 package com.icoud.icloud.controller;
 
-import static org.junit.Assert.fail;
-
 import javax.annotation.Resource;
 
 import org.junit.Assert;

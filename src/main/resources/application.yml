@@ -34,7 +34,14 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
   type-aliases-package: cn.com.icloud.mapper  
-            
+  
+# 配置分页插件pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+             
 logging:
   level:
     cn.com.icloud.mapper.system: debug

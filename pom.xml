@@ -75,7 +75,13 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
-        
+         <!-- MyBatis及插件依赖 -->
+        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.2</version>
+        </dependency>
         <!--mapper-->
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <dependency>
@@ -84,6 +90,12 @@
             <version>${mapper-spring-boot-starter.version}</version>
         </dependency>
         
+        <!-- 分页插件 -->
+        <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper-spring-boot-starter</artifactId>
+		    <version>1.2.7</version>
+		</dependency>
         <!-- h2数据库使用 -->
         <!-- <dependency>
 		   	<groupId>com.h2database</groupId>
