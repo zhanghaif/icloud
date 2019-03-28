@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import cn.com.icloud.controller.AdminController;
 import cn.com.icloud.core.common.SysLog;
 import cn.com.icloud.core.response.Result;
 import cn.com.icloud.core.response.ResultGenerator;
@@ -36,9 +35,6 @@ public class UserController {
 
 	@Resource
 	UserService userService;
-	
-	@Resource
-	AdminController adminController;
 	
 	@PreAuthorize("hasAuthority('system:user:list')")
 	@ApiOperation(value = "获取所有用户信息", notes = "用户信息")

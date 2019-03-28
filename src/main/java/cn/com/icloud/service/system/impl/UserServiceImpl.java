@@ -3,7 +3,9 @@ package cn.com.icloud.service.system.impl;
 import cn.com.icloud.core.service.AbstractService;
 import cn.com.icloud.mapper.system.PermissionMapper;
 import cn.com.icloud.mapper.system.UserMapper;
+import cn.com.icloud.mapper.system.UserRoleMapper;
 import cn.com.icloud.model.entity.system.SysUser;
+import cn.com.icloud.model.entity.system.SysUserRole;
 import cn.com.icloud.service.system.UserService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +28,9 @@ public class UserServiceImpl extends AbstractService<SysUser> implements UserSer
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private UserRoleMapper userRoleMapper; 
+    
     @Resource
     private PermissionMapper permissionMapper;
     
@@ -83,9 +88,10 @@ public class UserServiceImpl extends AbstractService<SysUser> implements UserSer
                 if (roleId == null) {
                     roleId = 2L;
                 }
-//                this.userRoleMapper.insert(new UserRole()
-//                        .setUserId(user.getId())
-//                        .setRoleId(roleId));
+                SysUserRole sysUserRole = new SysUserRole();
+                sysUserRole.setUserId(user.getId());
+                sysUserRole.setRoleId(roleId);
+                this.userRoleMapper.insert(sysUserRole);
             
         }
     }
